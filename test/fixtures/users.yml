@@ -14,11 +14,8 @@ lana:
   password_digest: <%= User.digest('password') %>
 
 malory:
-<<<<<<< HEAD
   name: Malory archer
-=======
   name: Malory Archer
->>>>>>> updating-users
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
 
@@ -27,8 +24,4 @@ user_<%= n %>:
   name: <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
-<<<<<<< HEAD
 <% end %>
-=======
-<% end %>
->>>>>>> updating-users
