@@ -32,6 +32,13 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		assert_equal 1, ActionMailer::Base.deliveries.size
 		user = assigns(:user)
 		assert_not user.activated?
+		# Try to view account in users index before account activation.
+		get users_path
+		assert_select 'a', text: user.name, count: 0
+		# Try to view account profile before account activation.
+		get user_path(user)
+		follow_redirect!
+		assert_template 'layouts/application'
 		# Try to log in before activation.
 		log_in_as(user)
 		assert_not is_logged_in?
