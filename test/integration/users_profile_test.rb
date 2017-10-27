@@ -19,5 +19,8 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 			assert_match micropost.content, response.body
 		end
 		assert_select 'div[class=pagination]', count: 1
+		assert_select "div[class=stats]", count: 1
+		assert_select "a[href=?]", following_user_path(@user)
+		assert_select "a[href=?]", followers_user_path(@user)
 	end
 end
