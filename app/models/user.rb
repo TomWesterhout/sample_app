@@ -71,7 +71,7 @@ class User < ApplicationRecord
 	# Defines a proto-feed.
 	# See "Following user" for the full implementation
 	def feed
-		Micropost.where("user_id=?", id)
+		Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
 	end
 
 	# Follows a user.
